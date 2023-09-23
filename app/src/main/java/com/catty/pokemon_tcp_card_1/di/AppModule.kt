@@ -2,6 +2,7 @@ package com.catty.pokemon_tcp_card_1.di
 
 import com.catty.pokemon_tcp_card_1.data.remote.PokeAPI
 import com.catty.pokemon_tcp_card_1.repository.PokemonRepositoryImpl
+import com.google.gson.internal.GsonBuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,13 +26,14 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providePokeApi(client: OkHttpClient): Retrofit {
+    fun providePokeApi(client: OkHttpClient):Retrofit{
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BuildConfig.API_BASE)
+            .baseUrl(GsonBuildConfig.VERSION)
             .client(client)
             .build()
     }
+
 
     @Provides
     @Singleton
