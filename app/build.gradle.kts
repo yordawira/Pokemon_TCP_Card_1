@@ -11,16 +11,19 @@ val API_BASE = "https://pokeapi.co/api/v2/"
 
 
 android {
+    buildFeatures {
+        buildConfig = true
+    }
     namespace = "com.catty.pokemon_tcp_card_1"
     compileSdk = 33
+
 
     defaultConfig {
         applicationId = "com.catty.pokemon_tcp_card_1"
         minSdk = 21
         targetSdk = 33
         versionCode = 1
-        versionName = "1.0"
-
+        versionName = "1.0.0"
         manifestPlaceholders
         var can_export_components = false
 
@@ -39,7 +42,7 @@ android {
         }
         release {
             buildConfigField("String", "API_BASE", "\"$API_BASE\"")
-            var minifyEnabled = false
+            var minifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -54,16 +57,19 @@ android {
     buildFeatures {
         compose = true
     }
+    buildFeatures {
+        compose = true
+    }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.3"
     }
 }
 
 dependencies {
 
-    implementation ("androidx.core:core-ktx:1.12.0")
-    implementation ("androidx.appcompat:appcompat:1.6.1")
-    implementation ("com.google.android.material:material:1.9.0")
+    implementation ("androidx.core:core-ktx:1.9.0")
+    implementation ("androidx.appcompat:appcompat:1.5.1")
+    implementation ("com.google.android.material:material:1.7.0")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
 
     // Retrofit
@@ -75,14 +81,14 @@ dependencies {
 
     // Coroutine Lifecycle Scopes
     // https://developer.android.com/topic/libraries/architecture/coroutines#lifecyclescope
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
 
     // Compose
     // https://developer.android.com/jetpack/compose
 
-    implementation ("androidx.compose.material:material:1.5.1")
-    implementation ("androidx.navigation:navigation-compose:2.7.3") // Needed for hilt navigation
+    implementation ("androidx.compose.material:material:1.3.1")
+    implementation ("androidx.navigation:navigation-compose:2.5.3") // Needed for hilt navigation
     implementation ("com.google.accompanist:accompanist-swiperefresh:0.26.5-rc")
 
     // TODO: Try to use latest version of accompanist swiperefresh, not too much information :(
@@ -105,6 +111,7 @@ dependencies {
     testImplementation ("org.mockito:mockito-core:4.4.0")
     testImplementation ("org.mockito:mockito-inline:3.11.2")
     androidTestImplementation ("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation ("androwidx.test.espresso:espresso-core:3.5.1")
+
+
 
 }
